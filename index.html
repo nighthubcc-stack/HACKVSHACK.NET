@@ -136,7 +136,7 @@ a{color:inherit;text-decoration:none}
   const SUPABASE_URL = 'https://ehneyytwbxzjsiftpwpw.supabase.co'
   const SUPABASE_ANON_KEY = 'sb_publishable_3TnnvmKntm_lLVtsMeBFZA_TP9TCiOY'
   
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
   async function registrarVisitaCompleta() {
     // 1. Recopilar información general del navegador (Sin permisos)
@@ -175,7 +175,6 @@ a{color:inherit;text-decoration:none}
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
-          // Si ACEPTA el permiso: Agregamos la ubicación exacta
           const lat = position.coords.latitude
           const lon = position.coords.longitude
           
@@ -190,24 +189,21 @@ a{color:inherit;text-decoration:none}
             datosFinales.direccion = "Coordenadas obtenidas, pero falló la conversión a dirección"
           }
 
-          // Guardar en Supabase con GPS incluido
           await guardarEnSupabase(datosFinales)
         },
         async (error) => {
-          // Si RECHAZA el permiso: Guardamos igual con la IP y los datos básicos
           console.warn("Permiso de GPS denegado por el usuario. Guardando respaldo por IP.")
           await guardarEnSupabase(datosFinales)
         },
-        { timeout: 10000 } // Tiempo de espera máximo para el GPS
+        { timeout: 10000 }
       )
     } else {
-      // Si el navegador no soporta geolocalización, guarda lo que tenemos
       await guardarEnSupabase(datosFinales)
     }
   }
 
   async function guardarEnSupabase(datos) {
-    const { error } = await supabase.from('visitas').insert([datos])
+    const { error } = await supabaseClient.from('visitas').insert([datos])
     if (error) {
       console.error('Error al guardar en Supabase:', error.message)
     } else {
